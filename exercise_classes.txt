@@ -1,0 +1,96 @@
+exercise_name
+Futsal
+Flys
+Push chest
+Wide row
+Push shoulders
+Inner lat pulldown
+Bicep machine
+Tricep machine
+Concentration curl
+Bicep curl
+Hammer curl
+Press-ups
+Football
+Rear delt
+Lateral raise
+Deadlift
+Lawn mower
+Tricep pushdown
+Squat
+Plank
+Side plank
+Bench press
+Supported squat
+Wide lat pulldown
+Super squat
+Vectra bench press
+Run
+Incline press-ups
+Decline press-ups
+Hike
+Vectra incline bench press
+Vectra decline bench press
+Supported incline bench press
+Lower cable fly
+Upper cable fly
+Barbell curl
+Supported deadlift
+Leg press
+Kneeling leg curl
+Incline bench press
+High wide row
+Glute
+Decline bench press
+Reverse barbell curl
+Standing calf
+Delt fly
+Longpull inner
+Preacher curl
+Reverse preacher curl
+Sitting calf
+Tricep overhead cable
+Lateral bench machine
+Bicep pushdown
+Incline bicep curl
+Toe raise
+Side hammer curl
+Supported shoulder press
+Face pull
+Longpull wide
+T-bar inner
+Wide pullup
+Inner pullup
+Alternating lat pulldown
+Upper cable row
+Sitting lateral raise
+Supported tricep dips
+Lower cable row
+Backward bicep curl
+Leg extension
+Nutmeg delt fly
+Sitting dumbbell press
+Dumbbell chest press
+T-bar wide
+Two-rope tricep pushdown
+Supported row
+Hexagon deadlift
+Side step
+Mix pot
+Hexagon Squat
+Sitting incline cable flys
+Hexagon squat
+Single-arm fly
+Lateral raise machine
+Skullcrusher
+Prone leg curl
+Hip adduction
+Hip abduction
+Sitting dip
+Ab crunch machine
+Barbell row
+Front delt machine
+Athletic wide pullup
+T-bar row
+Tricep dip machine
+Upper cable flys
