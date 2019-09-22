@@ -65,3 +65,49 @@ wrangle.intensity.metrics <- function(data = data) {
 
   return(data)
 }
+
+wrangle.time.metrics <- function(data = data) {
+  # format dates and set up date-location metrics for intensity comparisons over time
+
+  data <- data %>%
+
+    mutate(
+      # format dates
+      date = as.Date(date, "%m/%d/%Y"),
+
+      # create gym/not-gym indicator
+      location = case_when(
+        exercise %in% aerobic ~ "aerobic",
+        TRUE                  ~ "gym"
+      )
+    ) %>%
+
+    # intensity by date
+    group_by(date) %>%
+    mutate(n_exercise_bydate = n(),
+           intensity_bydate  = sum(weight_intensity) / (n_exercise_bydate^exercise_exponent)) %>%
+    ungroup() %>%
+
+    # intensity by date and location
+    group_by(date, location) %>%
+    mutate(
+      n_exercise_bydatelocation = n(),
+      intensity_bydatelocation  = sum(weight_intensity) / (n_exercise_bydatelocation^exercise_exponent)
+    ) %>%
+    ungroup() %>%
+
+    # index intensity-time metrics to first instance of exercise
+    group_by(location) %>%
+    mutate(
+      index_intensity_bydate         = intensity_bydate         / first(intensity_bydate),
+      index_intensity_bydatelocation = intensity_bydatelocation / first(intensity_bydatelocation)
+    ) %>%
+    arrange(date) %>%
+    mutate(
+      cummax_index_intensity_bydate         = cummax(index_intensity_bydate),
+      cummax_index_intensity_bydatelocation = cummax(index_intensity_bydatelocation)
+    ) %>%
+    ungroup()
+
+  return(data)
+}
