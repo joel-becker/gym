@@ -111,3 +111,76 @@ wrangle.time.metrics <- function(data = data) {
 
   return(data)
 }
+
+wrangle.time.chart <- function(data = data) {
+  # generates decaying curve of exercise intensity over time
+
+  # obtain list of dates from first exercise until present
+  dates <- data.frame(date = seq.Date(min(data$date), Sys.Date(), 1))
+
+  # summarise decaying exercise intensity over these dates
+  data <- data %>%
+
+    # join intensity data to dates
+    right_join(dates, by = "date") %>%
+
+    # summarise one row per date
+    group_by(date) %>%
+    summarise(
+      intensity_bydate         = mean(intensity_bydate),
+      intensity_bydatelocation = mean(intensity_bydatelocation)
+      ) %>%
+    ungroup() %>%
+
+    # compute decaying sum of intensity over time
+    mutate(
+      # correct for zero-exercise days
+      intensity_bydate = case_when(
+        is.na(intensity_bydate) ~ 0,
+        TRUE                    ~ intensity_bydate
+        ),
+      intensity_bydatelocation = case_when(
+        is.na(intensity_bydatelocation) ~ 0,
+        TRUE                    ~ intensity_bydatelocation
+        ),
+      # compute decaying sum of intensity over time
+      decay_intensity_bydate = intensity_bydate +
+        (AR^0) * MA * lag(intensity_bydate, default=0) +
+        (AR^1) * MA * lag(intensity_bydate, 2, default=0) +
+        (AR^2) * MA * lag(intensity_bydate, 3, default=0) +
+        (AR^3) * MA * lag(intensity_bydate, 4, default=0) +
+        (AR^4) * MA * lag(intensity_bydate, 5, default=0) +
+        (AR^5) * MA * lag(intensity_bydate, 6, default=0) +
+        (AR^6) * MA * lag(intensity_bydate, 7, default=0),
+      decay_intensity_bydatelocation = intensity_bydatelocation +
+        (AR^0) * MA * lag(intensity_bydatelocation, default=0) +
+        (AR^1) * MA * lag(intensity_bydatelocation, 2, default=0) +
+        (AR^2) * MA * lag(intensity_bydatelocation, 3, default=0) +
+        (AR^3) * MA * lag(intensity_bydatelocation, 4, default=0) +
+        (AR^4) * MA * lag(intensity_bydatelocation, 5, default=0) +
+        (AR^5) * MA * lag(intensity_bydatelocation, 6, default=0) +
+        (AR^6) * MA * lag(intensity_bydatelocation, 7, default=0)
+      )
+
+  return(data)
+}
+
+plot.time.chart <- function(data = data, location = F) {
+  # plots chart of decaying exercise intensity over time
+
+  if (location == TRUE) {
+    plot <- ggplot(data, aes(x=date, y=decay_intensity_bydatelocation)) +
+      geom_line(stat="smooth", method = "lm", se=FALSE, aes(group=month_number), colour="#7570b3", size=1.2, alpha=0.3) +
+      geom_line(size=1.2, colour="#7570b3")
+  } else {
+    plot <- ggplot(data, aes(x=date, y=decay_intensity_bydate)) +
+      geom_line(stat="smooth", method = "lm", se=FALSE, colour="#1b9e77", size=1.2, alpha=0.4) +
+      geom_line(size=1.2, colour="#7570b3")
+  }
+
+  plot <- plot +
+    theme_minimal() +
+    ylim(0, NA)
+
+  return(plot)
+}
