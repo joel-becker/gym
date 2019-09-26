@@ -184,3 +184,26 @@ plot.time.chart <- function(data = data, location = F) {
 
   return(plot)
 }
+
+wrangle.workout.chart <- function(data = data) {
+  # wrangles data in preperation for workout intensity chart
+
+  data <- data %>%
+
+    # only interested in weights
+    filter(location != "aerobic") %>%
+
+    # one row per workout
+    select(
+      date,
+      location,
+      index_intensity_bydate,
+      index_intensity_bydatelocation,
+      cummax_index_intensity_bydate,
+      cummax_index_intensity_bydatelocation
+      ) %>%
+    distinct()
+
+  return(data)
+
+}
