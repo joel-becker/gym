@@ -26,7 +26,7 @@ chest <- c(
   "Bench press",
   "Incline bench press",
   "Decline bench press",
-  "Shoulder press"
+  "Shoulder press",
 
   "Supported bench press",
   "Supported incline bench press",
@@ -37,7 +37,7 @@ chest <- c(
   "Press-ups",
   "Incline press-ups",
   "Decline press-ups",
-  "Supported shoulder press"
+  "Supported shoulder press",
 
   "Push chest",
   "Dumbbell chest press",
@@ -63,7 +63,7 @@ frontdelt <- c(
   "Press-ups",
   "Incline press-ups",
   "Decline press-ups",
-  "Supported shoulder press"
+  "Supported shoulder press",
 
   "Push shoulders",
   "Standing dumbbell press"
@@ -71,9 +71,9 @@ frontdelt <- c(
 
 sidedelt <- c(
   "Shoulder press",
-  "Sitting dumbbell press"
+  "Sitting dumbbell press",
 
-  "Supported shoulder press"
+  "Supported shoulder press",
 
   "Lateral raise",
   "Sitting lateral raise",
@@ -86,7 +86,7 @@ tricep <- c(
   "Bench press",
   "Incline bench press",
   "Decline bench press",
-  "Shoulder press"
+  "Shoulder press",
 
   "Supported bench press",
   "Supported incline bench press",
@@ -203,23 +203,7 @@ lat <- c(
   "Alternating lat pulldown",
   "Upper cable row",
   "Lower cable row",
-  "Lawn mower",
-
-  "Bicep machine",
-  "Bicep curl",
-  "Incline bicep curl",
-  "Concentration curl",
-  "Hammer curl",
-  "Side hammer curl",
-  "Barbell curl",
-  "Reverse barbell curl",
-  "Preacher curl",
-  "Reverse preacher curl",
-  "Backward bicep curl",
-  "Bicep pushdown",
-
-  "Rear delt fly",
-  "Face pull"
+  "Lawn mower"
 )
 
 bicep <- c(
@@ -256,10 +240,7 @@ bicep <- c(
   "Preacher curl",
   "Reverse preacher curl",
   "Backward bicep curl",
-  "Bicep pushdown",
-
-  "Rear delt fly",
-  "Face pull"
+  "Bicep pushdown"
 )
 
 reardelt <- c(
@@ -404,9 +385,9 @@ exercise_classes <- data.frame(exercise_name=exercise_name) %>%
     hamstring = case_when(exercise_name %in% hamstring ~ 1, TRUE ~ 0),
     calf      = case_when(exercise_name %in% calf ~ 1,      TRUE ~ 0),
 
-    push      = chest + frontdelt + sidedelt + tricep
-    pull      = upperback + midback + lowerback + lat + bicep + reardelt
-    legs      = quad + hamstring + calf
+    push      = chest + frontdelt + sidedelt + tricep,
+    pull      = upperback + midback + lowerback + lat + bicep + reardelt,
+    legs      = quad + hamstring + calf,
 
     total     = push + pull + legs
   )
