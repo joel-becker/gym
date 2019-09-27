@@ -26,7 +26,6 @@ chest <- c(
   "Bench press",
   "Incline bench press",
   "Decline bench press",
-  "Shoulder press",
 
   "Supported bench press",
   "Supported incline bench press",
@@ -37,7 +36,6 @@ chest <- c(
   "Press-ups",
   "Incline press-ups",
   "Decline press-ups",
-  "Supported shoulder press",
 
   "Push chest",
   "Dumbbell chest press",
@@ -72,6 +70,7 @@ frontdelt <- c(
 sidedelt <- c(
   "Shoulder press",
   "Sitting dumbbell press",
+  "Standing dumbbell press",
 
   "Supported shoulder press",
 
@@ -117,7 +116,7 @@ push <- c(chest, frontdelt, sidedelt, tricep)
 upperback <- c(
   "Deadlift",
   "Supported deadlift",
-  "Hexagon",
+  "Hexagon deadlift",
   "Bent over row",
   "Supported row",
   "Inner pullup",
@@ -129,6 +128,11 @@ upperback <- c(
   "Longpull wide",
   "T-bar inner",
   "T-bar wide",
+
+  "Shoulder press",
+  "Supported shoulder press",
+  "Sitting dumbbell press",
+  "Standing dumbbell press",
 
   "Inner lat pulldown",
   "Wide lat pulldown",
@@ -168,24 +172,10 @@ midback <- c(
 lowerback <- c(
   "Deadlift",
   "Supported deadlift",
-  "Hexagon",
-  "Bent over row",
-  "Supported row",
-  "Inner pullup",
-  "Wide pullup",
-
-  "Wide row",
-  "High Wide row",
-  "Longpull inner",
-  "Longpull wide",
-  "T-bar inner",
-  "T-bar wide"
+  "Hexagon deadlift"
 )
 
 lat <- c(
-  "Deadlift",
-  "Supported deadlift",
-  "Hexagon",
   "Bent over row",
   "Supported row",
   "Inner pullup",
@@ -207,9 +197,6 @@ lat <- c(
 )
 
 bicep <- c(
-  "Deadlift",
-  "Supported deadlift",
-  "Hexagon",
   "Bent over row",
   "Supported row",
   "Inner pullup",
@@ -244,9 +231,6 @@ bicep <- c(
 )
 
 reardelt <- c(
-  "Deadlift",
-  "Supported deadlift",
-  "Hexagon",
   "Bent over row",
   "Supported row",
   "Inner pullup",
@@ -280,8 +264,8 @@ pull <- c(upperback, midback, lowerback, lat, bicep, reardelt)
 quad <- c(
   "Deadlift",
   "Supported deadlift",
-  "Hexagon squat",
   "Hexagon deadlift",
+  "Hexagon squat",
   "Squat",
   "Super squat",
   "Supported squat",
@@ -315,12 +299,12 @@ hamstring <- c(
   "Standing calf",
   "Sitting calf",
   "Toe raise"
-
 )
 
 calf <- c(
   "Deadlift",
   "Supported deadlift",
+  "Hexagon deadlift",
   "Hexagon squat",
   "Squat",
   "Super squat",
@@ -344,7 +328,11 @@ core <- c(
   "Plank",
   "Side plank",
   "Side step",
-  "Mix pot"
+  "Mix pot",
+
+  "Deadlift",
+  "Supported deadlift",
+  "Hexagon deadlift"
 )
 
 
