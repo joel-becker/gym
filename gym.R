@@ -18,6 +18,9 @@ new.packages <- packages[!(packages %in% installed.packages()[, "Package"])]
 if(length(new.packages)) install.packages(new.packages)
 lapply(packages, library, character.only = TRUE)
 
+# import functions
+source("download_data.R")
+
 # numbers to calibrate intensity metrics
 AR <- 0.4
 MA <- 0.8
