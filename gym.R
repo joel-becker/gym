@@ -210,3 +210,31 @@ wrangle.workout.chart <- function(data = data) {
   return(data)
 
 }
+
+plot.workout.chart <- function(data = data, location = F) {
+
+  # plot chart of per-workout intensity over time
+
+  if (location == TRUE) {
+
+    plot <- ggplot(data, aes(x=date, y=index_intensity_bydatelocation, group=location, colour=location)) +
+      geom_line(aes(y=cummax_index_intensity_bydatelocation), size=1.5) +
+      scale_color_manual(values=c("#7570b3", "#1b9e77"))
+
+  } else {
+
+    plot <- ggplot(data, aes(x=date, y=index_intensity_bydate)) +
+      geom_line(aes(y=cummax_index_intensity_bydate), size=1.5) +
+      scale_color_manual(values=c("#1b9e77"))
+
+  }
+
+  plot <- plot +
+    geom_point(size=3, alpha=1/3) +
+    geom_line(stat="smooth",method = "lm", se=FALSE, size=1.5, alpha=1/3) +
+    ylim(0, NA) +
+    theme_minimal()
+
+  return(plot)
+
+}
