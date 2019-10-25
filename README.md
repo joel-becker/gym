@@ -14,10 +14,9 @@
 
 ## scripts
 
-`1.0_class_exercises.R` classes exercises by muscle group, before aggregating classes to similar muscle groups (e.g. push, pull, legs).
+Scripts are to be run in the below order. (Eventually this will be formalised in a master script.)
 
-`2.0_download_data.R` downloads data and checks for clashes between input exercise groups and classed exercise groups.
-
-`3.0_produce_charts.R` takes downloaded data and produces visualisations.
-
-`master_script.sh` runs the above scripts sequentially.
+1. `download_data.R` downloads the data from google sheets.
+2. `class_exercises.R` classes exercises according to muscle group(s) used.
+3. `wrangle_data.R` wrangles data in preperation for plotting.
+4. `plot_data.R` produces visualisations from the wrangled data.
