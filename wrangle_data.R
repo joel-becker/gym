@@ -189,3 +189,29 @@ wrangle.workout.chart <- function(data = data) {
   return(data)
 
 }
+
+wrangle.exercise.chart <- function(data = data, n_exercise = 4, exercise_recency = 0.8) {
+
+  # wrangles data in preperation for exercise intensity chart
+
+  data <- data %>%
+
+    # compute exercise-level measures
+    group_by(exercise) %>%
+    mutate(n_exercise = n(),
+           latest_exercise = max(date),
+           cummax_index_intensity = cummax(index_intensity)) %>%
+    ungroup() %>%
+
+    # filter number of charts by number/recency of exercises
+    mutate(min_date = min(date),
+           max_date = max(date),
+           exercise_recency = as.numeric(latest_exercise - min_date) / as.numeric(max_date - min_date)) %>%
+    filter(n_exercise > 4 &
+             exercise_recency > 0.8 &
+             location == "gym"
+           )
+
+  return(data)
+
+}
