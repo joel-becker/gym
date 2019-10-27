@@ -32,3 +32,13 @@ source("wrangle_data.R")
 
 # plotting
 source("plot_data.R")
+
+
+########################################################
+##################### Run functions ####################
+########################################################
+
+data <- download.data() %>%
+  display.missing.exercise(., exercise_classes = fread("exercise_classes.txt")) %>%
+  wrangle.intensity.metrics() %>%
+  wrangle.time.metrics()
