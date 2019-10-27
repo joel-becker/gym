@@ -35,13 +35,18 @@ source("plot_data.R")
 
 
 ########################################################
-##################### Run functions ####################
+########### Download, check and wrangle data ###########
 ########################################################
 
 data <- download.data() %>%
-  display.missing.exercise(., exercise_classes = fread("exercise_classes.txt")) %>%
+  display.missing.exercise(., exercise_classes = exercise_classes) %>%
   wrangle.intensity.metrics() %>%
   wrangle.time.metrics()
+
+
+########################################################
+############### Prepare and produce plots ##############
+########################################################
 
 time_chart <- data %>%
   wrangle.time.chart() %>%
@@ -54,3 +59,12 @@ workout_chart <- data %>%
 exercise_chart <- data %>%
   wrangle.exercise.chart() %>%
   plot.exercise.chart()
+
+
+########################################################
+###################### Save plots ######################
+########################################################
+
+ggsave("time.png",     time_chart,     width = 16, height = 9)
+ggsave("workout.png",  workout_chart,  width = 16, height = 9)
+ggsave("exercise.png", exercise_chart, width = 16, height = 9)
