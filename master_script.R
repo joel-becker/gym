@@ -42,3 +42,15 @@ data <- download.data() %>%
   display.missing.exercise(., exercise_classes = fread("exercise_classes.txt")) %>%
   wrangle.intensity.metrics() %>%
   wrangle.time.metrics()
+
+time_chart <- data %>%
+  wrangle.time.chart() %>%
+  plot.time.chart()
+
+workout_chart <- data %>%
+  wrangle.workout.chart() %>%
+  plot.workout.chart()
+
+exercise_chart <- data %>%
+  wrangle.exercise.chart() %>%
+  plot.exercise.chart()
