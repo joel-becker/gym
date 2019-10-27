@@ -21,17 +21,10 @@ lapply(packages, library, character.only = TRUE)
 ################### Source functions ###################
 ########################################################
 
-# downloading and checking
-source("download_data.R")
-
-# exercise-classification
-source("class_exercises.R")
-
-# wrangling
-source("wrangle_data.R")
-
-# plotting
-source("plot_data.R")
+source("download_data.R")   # downloading and checking
+source("class_exercises.R") # exercise-classification
+source("wrangle_data.R")    # wrangling
+source("plot_data.R")       # plotting
 
 
 ########################################################
