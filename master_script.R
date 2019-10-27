@@ -8,10 +8,9 @@
 
 
 ########################################################
-######################## Set-up ########################
+#################### Load libraries ####################
 ########################################################
 
-# load libraries
 packages <- c("dplyr", "data.table", "ggplot2", "tidyr")
 new.packages <- packages[!(packages %in% installed.packages()[, "Package"])]
 if(length(new.packages)) install.packages(new.packages)
@@ -22,14 +21,14 @@ lapply(packages, library, character.only = TRUE)
 ################### Source functions ###################
 ########################################################
 
-# downloading and checking functions
+# downloading and checking
 source("download_data.R")
 
-# exercise-classification functions
-source("download_data.R")
+# exercise-classification
+source("class_exercises.R")
 
-# wrangling functions
-source("download_data.R")
+# wrangling
+source("wrangle_data.R")
 
-# plotting functions
-source("download_data.R")
+# plotting
+source("plot_data.R")
