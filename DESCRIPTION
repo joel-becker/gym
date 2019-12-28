@@ -16,4 +16,4 @@ Suggests:
     googledrive
 Imports:
     ggplot2,
-    googledrive
+    data.table
