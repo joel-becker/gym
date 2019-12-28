@@ -1,7 +1,7 @@
 Package: gym
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9001
-Authors@R: 
+Authors@R:
     person(given = "First",
            family = "Last",
            role = c("aut", "cre"),
@@ -11,7 +11,9 @@ Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Suggests: 
-    testthat (>= 2.1.0)
-Imports: 
-    ggplot2
+Suggests:
+    testthat (>= 2.1.0),
+    googledrive
+Imports:
+    ggplot2,
+    googledrive
