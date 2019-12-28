@@ -335,7 +335,7 @@ exercise_name <- unique(all_exercises)
 
 class_exercises <- function() {
   exercise_classes <- data.frame(exercise_name=exercise_name) %>%
-    mutate(
+    dplyr::mutate(
       chest     = case_when(exercise_name %in% chest ~ 1,     TRUE ~ 0),
       frontdelt = case_when(exercise_name %in% frontdelt ~ 1, TRUE ~ 0),
       sidedelt  = case_when(exercise_name %in% sidedelt ~ 1,  TRUE ~ 0),
@@ -361,5 +361,5 @@ class_exercises <- function() {
   
   # aggregate muscle groups
   output_path <- paste0(getwd(), "/exercise_classes.txt")
-  fwrite(exercise_classes, output_path, sep=",")
+  data.table::fwrite(exercise_classes, output_path, sep=",")
 }
