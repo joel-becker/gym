@@ -2,12 +2,16 @@
 #'
 #' @description Format dates and set up date-location metrics for intensity comparisons over time
 #' @param data Data from download_data()
+#' @param exercise_exponent Exponent for weighting number of exercises
 #' @keywords wrangle
 #' @export
 #' @examples
 #' wrangle_time_metrics()
 
-wrangle_time_metrics <- function(data = data) {
+wrangle_time_metrics <- function(
+  data,
+  exercise_exponent = 0.6
+) {
   # format dates and set up date-location metrics for intensity comparisons over time
 
   data <- data %>%
