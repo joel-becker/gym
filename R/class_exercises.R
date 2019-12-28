@@ -1,26 +1,4 @@
-#----------------------------------------------------------------------------------#
-# Classes exercises by muscle group
-# Author: Joel Becker
-
-# Notes:
-#
-#----------------------------------------------------------------------------------#
-
-
-########################################################
-######################## Set-up ########################
-########################################################
-
-# load libraries
-packages <- c("dplyr", "data.table")
-new.packages <- packages[!(packages %in% installed.packages()[, "Package"])]
-if(length(new.packages)) install.packages(new.packages)
-lapply(packages, library, character.only = TRUE)
-
-
-########################################################
-################### List push groups ###################
-########################################################
+# list push groups
 
 chest <- c(
   "Bench press",
@@ -108,10 +86,7 @@ tricep <- c(
 push <- c(chest, frontdelt, sidedelt, tricep)
 
 
-########################################################
-################### List pull groups ###################
-########################################################
-
+# list pull groups
 
 upperback <- c(
   "Deadlift",
@@ -257,9 +232,7 @@ reardelt <- c(
 pull <- c(upperback, midback, lowerback, lat, bicep, reardelt)
 
 
-########################################################
-################### List legs groups ###################
-########################################################
+# list legs groups
 
 quad <- c(
   "Deadlift",
@@ -320,9 +293,7 @@ calf <- c(
 legs <- c(quad, hamstring, calf)
 
 
-########################################################
-################## List core exercises #################
-########################################################
+# list core exercises
 
 core <- c(
   "Plank",
@@ -336,9 +307,7 @@ core <- c(
 )
 
 
-########################################################
-################ List aerobic exercises ################
-########################################################
+# list aerobic exercises
 
 aerobic <- c(
   "Football",
@@ -347,13 +316,14 @@ aerobic <- c(
 )
 
 
-########################################################
-################ Aggregate muscle groups ###############
-########################################################
+# aggregate muscle groups
 
 all_exercises <- c(push, pull, legs, core, aerobic)
 
 exercise_name <- unique(all_exercises)
+
+
+# class exercises
 
 exercise_classes <- data.frame(exercise_name=exercise_name) %>%
   mutate(
@@ -381,9 +351,7 @@ exercise_classes <- data.frame(exercise_name=exercise_name) %>%
   )
 
 
-########################################################
-################ Aggregate muscle groups ###############
-########################################################
+# aggregate muscle groups
 
 output_path <- paste0(getwd(), "/exercise_classes.txt")
 fwrite(exercise_classes, output_path, sep=",")
