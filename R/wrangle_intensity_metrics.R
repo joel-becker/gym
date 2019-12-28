@@ -4,20 +4,20 @@ wrangle.intensity.metrics <- function(data = data) {
   data <- data %>%
 
     # create arbitrary intensity measure
-    mutate(intensity = weight * (sets^sets_exponent)) %>%
+    dplyr::mutate(intensity = weight * (sets^sets_exponent)) %>%
 
     # intensity wrangling by exercise
-    group_by(exercise) %>%
-    mutate(
+    dplyr::group_by(exercise) %>%
+    dplyr::mutate(
       # mean intensity of each exercise
       mean_intensity = mean(intensity),
       # index intensity to first exercise for each exercise
       index_intensity = intensity / first(intensity)
     ) %>%
-    ungroup() %>%
+    dplyr::ungroup() %>%
 
     # intensity wrangling by exercise type
-    mutate(
+    dplyr::mutate(
       # normalise intensity
       normalise_intensity = intensity / mean_intensity,
       # weight intensity measure by exercise type
