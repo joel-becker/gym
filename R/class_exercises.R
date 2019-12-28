@@ -1,3 +1,11 @@
+#' @title Class exercises
+#'
+#' @description Class exercises by aerobic/anaerobic (and anaerobic type)
+#' @keywords class
+#' @export
+#' @examples
+#' class_exercises()
+
 # list push groups
 
 chest <- c(
