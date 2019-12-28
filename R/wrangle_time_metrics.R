@@ -1,4 +1,13 @@
-wrangle.time.metrics <- function(data = data) {
+#' @title Wrangle time metrics
+#'
+#' @description Format dates and set up date-location metrics for intensity comparisons over time
+#' @param data Data from download_data()
+#' @keywords wrangle
+#' @export
+#' @examples
+#' wrangle_time_metrics()
+
+wrangle_time_metrics <- function(data = data) {
   # format dates and set up date-location metrics for intensity comparisons over time
 
   data <- data %>%

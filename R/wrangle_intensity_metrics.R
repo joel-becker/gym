@@ -1,4 +1,14 @@
-wrangle.intensity.metrics <- function(
+#' @title Wrangle intensity metrics
+#'
+#' @description Compute intensity metrics (for within- and between-exercise comparisons)
+#' @param data Data from download_data()
+#' @param sets_exponent Exponent for weighting number of sets
+#' @keywords wrangle
+#' @export
+#' @examples
+#' wrangle_intensity_metrics()
+
+wrangle_intensity_metrics <- function(
   data = data,
   sets_exponent = 0.6,
   aerobic_intensity = 2,
