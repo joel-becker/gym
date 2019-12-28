@@ -1,4 +1,10 @@
-wrangle.intensity.metrics <- function(data = data) {
+wrangle.intensity.metrics <- function(
+  data = data,
+  sets_exponent = 0.6,
+  aerobic_intensity = 2,
+  compound_intensity = 1.3,
+  almost_compound_intensity = 1.1
+  ) {
   # compute intensity metrics (for within- and between-exercise comparisons)
 
   data <- data %>%
