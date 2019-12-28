@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/joel-becker/gym.svg?branch=master)](https://travis-ci.org/joel-becker/gym)
+<!-- badges: end -->
+
 # gym
 
 `gym` creates a set of visualisations to chart (progress) in tracked exercise over time.
