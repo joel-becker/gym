@@ -1,3 +1,6 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+data <- gym::download_exercise_data(file_name = "exercise_data", file_format = "csv")
+column_names <- colnames(data)
+
+test_that("Columns have correct names", {
+  expect_named(data, column_names)
 })
