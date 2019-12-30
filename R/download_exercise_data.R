@@ -2,11 +2,11 @@
 #'
 #' @description Tests integrity of downloaded data, as is necessary for reasonable visualisations.
 #' @param data Data
-#' @keywords download
+#' @keywords test
 #' @export
 #' @examples
 #' test_downloaded_data()
-test_downloaded_data <- function(data, exercise_data){
+test_downloaded_data <- function(exercise_data, exercise_classes){
   # no exercises in data not contained in exercise_classes.txt
   ##exercise_data <- gym::download_exercise_data(file_name = "data/exercise_data", file_format = "csv")
   
@@ -21,10 +21,10 @@ test_downloaded_data <- function(data, exercise_data){
   }
   
   # no missing data
-  missing_date <- sum(is.na(exercise[["date"]]))
-  missing_exercise <- sum(is.na(exercise[["exercise"]]))
-  missing_weight <- sum(is.na(exercise[["weight"]]))
-  missing_sets <- sum(is.na(exercise[["sets"]]))
+  missing_date <- sum(is.na(exercise_data[["date"]]))
+  missing_exercise <- sum(is.na(exercise_data[["exercise"]]))
+  missing_weight <- sum(is.na(exercise_data[["weight"]]))
+  missing_sets <- sum(is.na(exercise_data[["sets"]]))
   missing_total <- missing_date + missing_exercise + missing_weight + missing_sets
   
   if (missing_total > 0) {
@@ -35,12 +35,6 @@ test_downloaded_data <- function(data, exercise_data){
     stop("your data contains missing entries!")
   }
 }
-input_exercises <- exercise_data[, "exercise"]
-missing_exercises <- input_exercises[!(input_exercises %in% exercise_classes)]
-
-test_that("No exercises in data not contained in exercise_classes", {
-  expect_equal(length(missing_exercises), 0)
-})
 
 
 #' @title Download exercise data
@@ -61,6 +55,24 @@ download_exercise_data <- function(
   googledrive::drive_download(file_name, type = file_format, overwrite = TRUE)
   path <- paste0(file_name, ".", file_format)
   data <- data.table::fread(path)
+  
+  return(data)
+}
+
+
+#' @title Download and test exercise data
+#'
+#' @description Download and test exercise data at higher level using previous functions
+#' @param data Data
+#' @keywords download
+#' @export
+#' @examples
+#' get_data()
+get_data <- function(
+  file_name,
+  file_format,
+  exercise_classes = fread("data/exercise_classes.txt")
+) {
   
   return(data)
 }
