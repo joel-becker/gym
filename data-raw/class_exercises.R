@@ -18,9 +18,10 @@ chest <- c(
   "Push chest",
   "Dumbbell chest press",
   "Flys",
-  "Upper cable fly",
-  "Lower cable fly",
-  "Sitting upper cable fly"
+  "Decline cable fly",
+  "Incline cable fly",
+  "Sitting incline cable fly",
+  "Single-arm fly"
 )
 
 frontdelt <- c(
@@ -42,7 +43,8 @@ frontdelt <- c(
   "Supported shoulder press",
   
   "Push shoulders",
-  "Standing dumbbell press"
+  "Standing dumbbell press",
+  "Front delt machine"
 )
 
 sidedelt <- c(
@@ -54,9 +56,9 @@ sidedelt <- c(
   
   "Lateral raise",
   "Sitting lateral raise",
-  "Lateral bench machine",
+  "Lateral raise machine",
   "Delt fly",
-  "Nutmeg delt fly"
+  "Nutmeg delt cable"
 )
 
 tricep <- c(
@@ -80,7 +82,8 @@ tricep <- c(
   "Tricep pushdown",
   "Two-rope tricep pushdown",
   "Tricep overhead cable",
-  "Supported tricep dips"
+  "Supported tricep dip",
+  "Skullcrusher"
 )
 
 push <- c(chest, frontdelt, sidedelt, tricep)
@@ -92,13 +95,13 @@ upperback <- c(
   "Deadlift",
   "Supported deadlift",
   "Hexagon deadlift",
-  "Bent over row",
+  "Barbell row",
   "Supported row",
   "Inner pullup",
   "Wide pullup",
   
   "Wide row",
-  "High Wide row",
+  "High wide row",
   "Longpull inner",
   "Longpull wide",
   "T-bar inner",
@@ -121,13 +124,13 @@ midback <- c(
   "Deadlift",
   "Supported deadlift",
   "Hexagon",
-  "Bent over row",
+  "Barbell row",
   "Supported row",
   "Inner pullup",
   "Wide pullup",
   
   "Wide row",
-  "High Wide row",
+  "High wide row",
   "Longpull inner",
   "Longpull wide",
   "T-bar inner",
@@ -151,28 +154,24 @@ lowerback <- c(
 )
 
 lat <- c(
-  "Bent over row",
+  "Barbell row",
   "Supported row",
   "Inner pullup",
   "Wide pullup",
   
-  "Wide row",
-  "High Wide row",
-  "Longpull inner",
+  "High wide row",
   "Longpull wide",
-  "T-bar inner",
   "T-bar wide",
   
   "Inner lat pulldown",
   "Wide lat pulldown",
   "Alternating lat pulldown",
   "Upper cable row",
-  "Lower cable row",
   "Lawn mower"
 )
 
 bicep <- c(
-  "Bent over row",
+  "Barbell row",
   "Supported row",
   "Inner pullup",
   "Wide pullup",
@@ -206,13 +205,12 @@ bicep <- c(
 )
 
 reardelt <- c(
-  "Bent over row",
+  "Barbell row",
   "Supported row",
   "Inner pullup",
   "Wide pullup",
   
   "Wide row",
-  "High Wide row",
   "Longpull inner",
   "Longpull wide",
   "T-bar inner",
@@ -235,62 +233,48 @@ pull <- c(upperback, midback, lowerback, lat, bicep, reardelt)
 # list legs groups
 
 quad <- c(
-  "Deadlift",
-  "Supported deadlift",
-  "Hexagon deadlift",
   "Hexagon squat",
   "Squat",
-  "Super squat",
+  "Hack squat",
   "Supported squat",
   
   "Leg press",
-  "Leg extension",
-  
-  "Kneeling leg curl",
-  "Glute",
-  
-  "Standing calf",
-  "Sitting calf",
-  "Toe raise"
+  "Leg extension"
 )
 
 hamstring <- c(
   "Deadlift",
   "Supported deadlift",
-  "Hexagon squat",
   "Hexagon deadlift",
-  "Squat",
-  "Super squat",
-  "Supported squat",
+  "Rack deadlift",
   
-  "Leg press",
-  "Leg extension",
-  
-  "Kneeling leg curl",
-  "Glute",
-  
-  "Standing calf",
-  "Sitting calf",
-  "Toe raise"
+  "Hamstring curl"
 )
 
 calf <- c(
-  "Deadlift",
-  "Supported deadlift",
-  "Hexagon deadlift",
   "Hexagon squat",
   "Squat",
-  "Super squat",
-  "Supported squat",
   
-  "Leg press",
-  "Leg extension",
+  "Deadlift",
+  "Hexagon deadlift",
+  
   "Standing calf",
   "Sitting calf",
   "Toe raise"
 )
 
-legs <- c(quad, hamstring, calf)
+hip <- c(
+  "Hexagon squat",
+  "Squat",
+  
+  "Deadlift",
+  "Hexagon deadlift",
+  
+  "Hip adduction",
+  "Hip abduction"
+)
+
+legs <- c(quad, hamstring, calf, hip)
 
 
 # list core exercises
@@ -302,8 +286,14 @@ core <- c(
   "Mix pot",
   
   "Deadlift",
-  "Supported deadlift",
-  "Hexagon deadlift"
+  "Hexagon deadlift",
+  
+  "Squat",
+  "Hexagon squat",
+  
+  "Overhead press",
+  
+  "Ab crunch machine"
 )
 
 
