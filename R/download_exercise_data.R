@@ -8,8 +8,6 @@
 #' test_downloaded_data()
 test_downloaded_data <- function(exercise_data, exercise_classes){
   # no exercises in data not contained in exercise_classes.txt
-  ##exercise_data <- gym::download_exercise_data(file_name = "data/exercise_data", file_format = "csv")
-  
   input_exercises <- exercise_data[, "exercise"]
   missing_exercises <- input_exercises[!(input_exercises %in% exercise_classes)]
   
@@ -73,6 +71,9 @@ get_data <- function(
   file_format,
   exercise_classes = fread("data/exercise_classes.txt")
 ) {
+  exercise_data <- gym::download_exercise_data(file_name = "exercise_data", file_format = "csv")
+  
+  test_downloaded_data(exercise_data, exercises_classes)
   
   return(data)
 }
