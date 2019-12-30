@@ -8,10 +8,12 @@
 #' test_downloaded_data()
 test_downloaded_data <- function(exercise_data, exercise_classes){
   # no exercises in data not contained in exercise_classes.txt
-  input_exercises <- exercise_data[, "exercise"]
-  missing_exercises <- input_exercises[!(input_exercises %in% exercise_classes)]
+  input_exercises <- exercise_data[["exercise"]]
+  unique_input_exercises <- unique(input_exercises)
+  missing_exercises <- unique_input_exercises[!(unique_input_exercises %in% exercise_classes[["exercise_name"]])]
   
   if (length(missing_exercises) > 0) {
+    
     for (exercise in missing_exercises) {
       print(paste0("Missing exercise: ", exercise))
     }
@@ -73,7 +75,7 @@ get_data <- function(
 ) {
   exercise_data <- gym::download_exercise_data(file_name = "exercise_data", file_format = "csv")
   
-  test_downloaded_data(exercise_data, exercises_classes)
+  test_downloaded_data(exercise_data, exercise_classes)
   
   return(data)
 }
