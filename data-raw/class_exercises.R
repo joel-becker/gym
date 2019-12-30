@@ -359,6 +359,6 @@ aerobic_output_path <- paste0(getwd(), "/data/aerobic_classes.txt")
 anaerobic_output_path <- paste0(getwd(), "/data/anaerobic_classes.txt")
 
 data.table::fwrite(exercise_classes, classes_output_path, sep=",")
-data.table::fwrite(aerobic, aerobic_output_path, sep=",")
-data.table::fwrite(anaerobic, anaerobic_output_path, sep=",")
+data.table::fwrite(data.frame(aerobic), aerobic_output_path, sep=",")
+data.table::fwrite(data.frame(anaerobic), anaerobic_output_path, sep=",")
 
