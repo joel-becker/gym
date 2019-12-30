@@ -317,12 +317,14 @@ aerobic <- c(
 
 
 # aggregate muscle groups
-
 all_exercises <- c(push, pull, legs, core, aerobic)
-
 exercise_name <- unique(all_exercises)
-
 anaerobic <- exercise_name[!(exercise_name %in% aerobic)]
+
+
+# make lists into data frames for saving
+aerobic <- data.frame(aerobic)
+anaerobic <- data.frame(anaerobic)
 
 
 # class exercises
@@ -358,7 +360,7 @@ classes_output_path <- paste0(getwd(), "/data/exercise_classes.txt")
 aerobic_output_path <- paste0(getwd(), "/data/aerobic_classes.txt")
 anaerobic_output_path <- paste0(getwd(), "/data/anaerobic_classes.txt")
 
-data.table::fwrite(exercise_classes, classes_output_path, sep=",")
-data.table::fwrite(data.frame(aerobic), aerobic_output_path, sep=",")
-data.table::fwrite(data.frame(anaerobic), anaerobic_output_path, sep=",")
+use_data(exercise_classes, overwrite = TRUE)
+use_data(aerobic, overwrite = TRUE)
+use_data(anaerobic, overwrite = TRUE)
 
