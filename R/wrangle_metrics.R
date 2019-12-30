@@ -115,7 +115,7 @@ wrangle_time_metrics <- function(
 #' @export
 #' @examples
 #' wrangle_time_chart()
-wrangle.time.chart <- function(data) {
+wrangle_time_chart <- function(data, AR = 0.4, MA = 0.8) {
   # obtain list of dates from first exercise until present
   dates <- data.frame(date = seq.Date(min(data$date), Sys.Date(), 1))
   
@@ -123,18 +123,18 @@ wrangle.time.chart <- function(data) {
   data <- data %>%
     
     # join intensity data to dates
-    right_join(dates, by = "date") %>%
+    dplyr::right_join(dates, by = "date") %>%
     
     # summarise one row per date
-    group_by(date) %>%
-    summarise(
+    dplyr::group_by(date) %>%
+    dplyr::summarise(
       intensity_bydate         = mean(intensity_bydate),
       intensity_bydatelocation = mean(intensity_bydatelocation)
     ) %>%
-    ungroup() %>%
+    dplyr::ungroup() %>%
     
     # compute decaying sum of intensity over time
-    mutate(
+    dplyr::mutate(
       # correct for zero-exercise days
       intensity_bydate = case_when(
         is.na(intensity_bydate) ~ 0,
