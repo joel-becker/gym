@@ -1,7 +1,7 @@
 context("Testing data integrity")
 
 
-data <- gym::download_exercise_data(file_name = "exercise_data", file_format = "csv")
+data <- gym::download_exercise_data(file_name = "data/exercise_data", file_format = "csv")
 
 
 # consistent column names
