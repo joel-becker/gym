@@ -7,7 +7,6 @@
 #' @export
 #' @examples
 #' wrangle_intensity_metrics()
-
 wrangle_intensity_metrics <- function(
   data = data,
   sets_exponent = 0.6,
@@ -58,7 +57,6 @@ wrangle_intensity_metrics <- function(
 #' @export
 #' @examples
 #' wrangle_time_metrics()
-
 wrangle_time_metrics <- function(
   data,
   exercise_exponent = 0.6
@@ -104,6 +102,66 @@ wrangle_time_metrics <- function(
       cummax_index_intensity_bydatelocation = cummax(index_intensity_bydatelocation)
     ) %>%
     dplyr::ungroup()
+  
+  return(data)
+}
+
+
+#' @title Wrangle time chart
+#'
+#' @description Wrangles data for time chart (decaying curve of exercise intensity over time)
+#' @param data Data from download_data()
+#' @keywords wrangle
+#' @export
+#' @examples
+#' wrangle_time_chart()
+wrangle.time.chart <- function(data) {
+  # obtain list of dates from first exercise until present
+  dates <- data.frame(date = seq.Date(min(data$date), Sys.Date(), 1))
+  
+  # summarise decaying exercise intensity over these dates
+  data <- data %>%
+    
+    # join intensity data to dates
+    right_join(dates, by = "date") %>%
+    
+    # summarise one row per date
+    group_by(date) %>%
+    summarise(
+      intensity_bydate         = mean(intensity_bydate),
+      intensity_bydatelocation = mean(intensity_bydatelocation)
+    ) %>%
+    ungroup() %>%
+    
+    # compute decaying sum of intensity over time
+    mutate(
+      # correct for zero-exercise days
+      intensity_bydate = case_when(
+        is.na(intensity_bydate) ~ 0,
+        TRUE                    ~ intensity_bydate
+      ),
+      intensity_bydatelocation = case_when(
+        is.na(intensity_bydatelocation) ~ 0,
+        TRUE                    ~ intensity_bydatelocation
+      ),
+      # compute decaying sum of intensity over time
+      decay_intensity_bydate = intensity_bydate +
+        (AR^0) * MA * lag(intensity_bydate, default=0) +
+        (AR^1) * MA * lag(intensity_bydate, 2, default=0) +
+        (AR^2) * MA * lag(intensity_bydate, 3, default=0) +
+        (AR^3) * MA * lag(intensity_bydate, 4, default=0) +
+        (AR^4) * MA * lag(intensity_bydate, 5, default=0) +
+        (AR^5) * MA * lag(intensity_bydate, 6, default=0) +
+        (AR^6) * MA * lag(intensity_bydate, 7, default=0),
+      decay_intensity_bydatelocation = intensity_bydatelocation +
+        (AR^0) * MA * lag(intensity_bydatelocation, default=0) +
+        (AR^1) * MA * lag(intensity_bydatelocation, 2, default=0) +
+        (AR^2) * MA * lag(intensity_bydatelocation, 3, default=0) +
+        (AR^3) * MA * lag(intensity_bydatelocation, 4, default=0) +
+        (AR^4) * MA * lag(intensity_bydatelocation, 5, default=0) +
+        (AR^5) * MA * lag(intensity_bydatelocation, 6, default=0) +
+        (AR^6) * MA * lag(intensity_bydatelocation, 7, default=0)
+    )
   
   return(data)
 }
