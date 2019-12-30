@@ -1,11 +1,3 @@
-#' @title Class exercises
-#'
-#' @description Class exercises by aerobic/anaerobic (and anaerobic type)
-#' @keywords class
-#' @export
-#' @examples
-#' class_exercises()
-
 # list push groups
 
 chest <- c(
@@ -333,33 +325,32 @@ exercise_name <- unique(all_exercises)
 
 # class exercises
 
-class_exercises <- function() {
-  exercise_classes <- data.frame(exercise_name=exercise_name) %>%
-    dplyr::mutate(
-      chest     = case_when(exercise_name %in% chest ~ 1,     TRUE ~ 0),
-      frontdelt = case_when(exercise_name %in% frontdelt ~ 1, TRUE ~ 0),
-      sidedelt  = case_when(exercise_name %in% sidedelt ~ 1,  TRUE ~ 0),
-      tricep    = case_when(exercise_name %in% tricep ~ 1,    TRUE ~ 0),
-      
-      upperback = case_when(exercise_name %in% upperback ~ 1, TRUE ~ 0),
-      midback   = case_when(exercise_name %in% midback ~ 1,   TRUE ~ 0),
-      lowerback = case_when(exercise_name %in% lowerback ~ 1, TRUE ~ 0),
-      lat       = case_when(exercise_name %in% lat ~ 1,       TRUE ~ 0),
-      bicep     = case_when(exercise_name %in% bicep ~ 1,     TRUE ~ 0),
-      reardelt  = case_when(exercise_name %in% reardelt ~ 1,  TRUE ~ 0),
-      
-      quad      = case_when(exercise_name %in% quad ~ 1,      TRUE ~ 0),
-      hamstring = case_when(exercise_name %in% hamstring ~ 1, TRUE ~ 0),
-      calf      = case_when(exercise_name %in% calf ~ 1,      TRUE ~ 0),
-      
-      push      = chest + frontdelt + sidedelt + tricep,
-      pull      = upperback + midback + lowerback + lat + bicep + reardelt,
-      legs      = quad + hamstring + calf,
-      
-      total     = push + pull + legs
-    )
-  
-  # aggregate muscle groups
-  output_path <- paste0(getwd(), "/exercise_classes.txt")
-  data.table::fwrite(exercise_classes, output_path, sep=",")
-}
+exercise_classes <- data.frame(exercise_name=exercise_name) %>%
+  dplyr::mutate(
+    chest     = case_when(exercise_name %in% chest ~ 1,     TRUE ~ 0),
+    frontdelt = case_when(exercise_name %in% frontdelt ~ 1, TRUE ~ 0),
+    sidedelt  = case_when(exercise_name %in% sidedelt ~ 1,  TRUE ~ 0),
+    tricep    = case_when(exercise_name %in% tricep ~ 1,    TRUE ~ 0),
+    
+    upperback = case_when(exercise_name %in% upperback ~ 1, TRUE ~ 0),
+    midback   = case_when(exercise_name %in% midback ~ 1,   TRUE ~ 0),
+    lowerback = case_when(exercise_name %in% lowerback ~ 1, TRUE ~ 0),
+    lat       = case_when(exercise_name %in% lat ~ 1,       TRUE ~ 0),
+    bicep     = case_when(exercise_name %in% bicep ~ 1,     TRUE ~ 0),
+    reardelt  = case_when(exercise_name %in% reardelt ~ 1,  TRUE ~ 0),
+    
+    quad      = case_when(exercise_name %in% quad ~ 1,      TRUE ~ 0),
+    hamstring = case_when(exercise_name %in% hamstring ~ 1, TRUE ~ 0),
+    calf      = case_when(exercise_name %in% calf ~ 1,      TRUE ~ 0),
+    
+    push      = chest + frontdelt + sidedelt + tricep,
+    pull      = upperback + midback + lowerback + lat + bicep + reardelt,
+    legs      = quad + hamstring + calf,
+    
+    total     = push + pull + legs
+  )
+
+# aggregate muscle groups
+output_path <- paste0(getwd(), "/exercise_classes.txt")
+data.table::fwrite(exercise_classes, output_path, sep=",")
+
