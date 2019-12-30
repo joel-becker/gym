@@ -35,23 +35,18 @@ wrangle_intensity_metrics <- function(
     # intensity wrangling by exercise type
     dplyr::mutate(
       # normalise intensity
-      normalise_intensity = intensity / mean_intensity
+      normalise_intensity = intensity / mean_intensity,
+      # weight intensity measure by exercise type
+      weight_intensity = case_when(
+        exercise %in% aerobic         ~ normalise_intensity * aerobic_intensity,
+        #exercise %in% compound        ~ normalise_intensity * compound_intensity,
+        #exercise %in% almost_compound ~ normalise_intensity * almost_compound_intensity,
+        TRUE                          ~ normalise_intensity
+      )
     )
 
   return(data)
 }
-
-# TODO: add relative intensities as follows
-
-## normalise intensity
-#normalise_intensity = intensity / mean_intensity,
-## weight intensity measure by exercise type
-#weight_intensity = case_when(
-#  exercise %in% aerobic         ~ normalise_intensity * aerobic_intensity,
-#  exercise %in% compound        ~ normalise_intensity * compound_intensity,
-#  exercise %in% almost_compound ~ normalise_intensity * almost_compound_intensity,
-#  TRUE                          ~ normalise_intensity
-#)
 
 
 #' @title Wrangle time metrics
