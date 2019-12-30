@@ -69,7 +69,7 @@ download_exercise_data <- function(
 get_data <- function(
   file_name,
   file_format,
-  exercise_classes = fread("data/exercise_classes.txt")
+  exercise_classes = gym::exercise_classes
 ) {
   exercise_data <- gym::download_exercise_data(file_name = "exercise_data", file_format = "csv")
   
