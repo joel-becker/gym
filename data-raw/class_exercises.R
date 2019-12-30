@@ -322,6 +322,8 @@ all_exercises <- c(push, pull, legs, core, aerobic)
 
 exercise_name <- unique(all_exercises)
 
+anaerobic <- exercise_name[!(exercise_name %in% aerobic)]
+
 
 # class exercises
 
@@ -350,7 +352,13 @@ exercise_classes <- data.frame(exercise_name=exercise_name) %>%
     total     = push + pull + legs
   )
 
-# aggregate muscle groups
-output_path <- paste0(getwd(), "/exercise_classes.txt")
-data.table::fwrite(exercise_classes, output_path, sep=",")
+# output data
+
+classes_output_path <- paste0(getwd(), "/data/exercise_classes.txt")
+aerobic_output_path <- paste0(getwd(), "/data/aerobic_classes.txt")
+anaerobic_output_path <- paste0(getwd(), "/data/anaerobic_classes.txt")
+
+data.table::fwrite(exercise_classes, classes_output_path, sep=",")
+data.table::fwrite(aerobic, aerobic_output_path, sep=",")
+data.table::fwrite(anaerobic, anaerobic_output_path, sep=",")
 
