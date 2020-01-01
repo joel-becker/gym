@@ -110,7 +110,7 @@ wrangle_time_metrics <- function(
 #' @title Wrangle time chart
 #'
 #' @description Wrangles data for time chart (decaying curve of exercise intensity over time)
-#' @param data Data from download_data()
+#' @param data Data from wrangle_time_metrics()
 #' @keywords wrangle
 #' @export
 #' @examples
@@ -167,16 +167,22 @@ wrangle_time_chart <- function(data, AR = 0.4, MA = 0.8) {
 }
 
 
-wrangle.workout.chart <- function(data = data) {
-  # wrangles data in preperation for workout intensity chart
-  
+#' @title Wrangle workout chart
+#'
+#' @description Wrangles data in preperation for workout intensity chart
+#' @param data Data from wrangle_time_metrics()
+#' @keywords wrangle
+#' @export
+#' @examples
+#' wrangle_workout_chart()
+wrangle_workout_chart <- function(data = data) {
   data <- data %>%
     
     # only interested in weights
-    filter(location != "aerobic") %>%
+    dplyr::filter(location != "aerobic") %>%
     
     # one row per workout
-    select(
+    dplyr::select(
       date,
       location,
       index_intensity_bydate,
@@ -184,7 +190,7 @@ wrangle.workout.chart <- function(data = data) {
       cummax_index_intensity_bydate,
       cummax_index_intensity_bydatelocation
     ) %>%
-    distinct()
+    dplyr::distinct()
   
   return(data)
   
