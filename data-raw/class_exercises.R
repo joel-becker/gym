@@ -15,7 +15,7 @@ chest <- c(
   "Incline press-ups",
   "Decline press-ups",
   
-  "Push chest",
+  "Chest press",
   "Dumbbell chest press",
   "Flys",
   "Decline cable fly",
